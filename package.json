@@ -1,0 +1,22 @@
+{
+  "name": "expenseproject",
+  "version": "1.0.0",
+  "description": "node complete",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nethra",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "express-handlebars": "^8.0.1",
+    "mysql2": "^3.11.3",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.5"
+  }
+}
