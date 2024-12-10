@@ -3,49 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker App</title>
     <link rel="stylesheet" href="expense.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
-    <div class="form-group">
-         <h1>Expense Tracker App</h1>
-        <label for="amount-input">Expense Amount: </label>
-        <input type="number" id="amount-input" aria-label="Enter expense amount">
-        <label for="description-input">Description: </label>
-        <input type="text" id="description-input" placeholder="Enter description">
-        <label for="category-select">Category: </label>
-        <select id="category-select">
-            <option value="Food & Beverage">Food & Beverage</option>
-            <option value="Fuel">Fuel</option>
-            <option value="Transport">Transport</option>
-            <option value="Salary">Salary</option>
-            <option value="Movie">Movie</option>
-        </select>
-        <button id="add-expense">Add Expense</button>
-    </div>
-    <button id="purchase-premium" class="purchase-btn">Purchase Premium Membership</button>
-    <button id="purchase" style="display: none;" class="btn btn-primary">You are Premium User</button>
-    <br>
-    <input id="show-leaderboard-btn" class="show-leaderboard-button" type="button" value="Show Leaderboard">
-    <div class="leaderboard-container">
-        <table class="leaderboard-table">
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Total Expense</th>
-                </tr>
-            </thead>
-            <tbody id="leaderboard-list">
-            </tbody>
-        </table>
-    </div> 
-    <ul id="expense-list"></ul>  
-    <button id="download-expenses">Download Expenses</button>
-    
-
-
    
+    <div class="container">
+        <h1 class="text-center">Expense Tracker App</h1>
+
+        <div class="form-group">
+            <label for="amount-input">Expense Amount:</label>
+            <input type="number" id="amount-input" aria-label="Enter expense amount">
+
+            <label for="description-input">Description:</label>
+            <input type="text" id="description-input" placeholder="Enter description">
+
+            <label for="category-select">Category:</label>
+            <select id="category-select">
+                <option value="Food & Beverage">Food & Beverage</option>
+                <option value="Fuel">Fuel</option>
+                <option value="Transport">Transport</option>
+                <option value="Salary">Salary</option>
+                <option value="Movie">Movie</option>
+            </select>
+            <button id="add-expense" class="btn btn-success">Add Expense</button>
+        </div>
+
+        <div class="premium-btn-container text-center">
+            <button id="purchase-premium" class="purchase-btn btn btn-warning">
+                Purchase Premium Membership
+            </button>
+            <button id="purchase" style="display: none;" class="btn btn-primary">
+                🌟You are a Premium User🌟
+            </button>
+        </div>
+
+      
+        <div class="leaderboard-container">
+            <h2>Leaderboard</h2>
+            <input id="show-leaderboard-btn" class="btn btn-info" type="button" value="Show Leaderboard">
+            <table class="leaderboard-table table">
+                <thead>
+                    <tr class="leaderboard-1">
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Total Expense</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-list"></tbody>
+            </table>
+        </div>
+
+        <div style="margin: 30px;">
+            <h2>Expenses</h2>
+            <div>
+                <label for="rowsPerPage">Rows per page:</label>
+                <select id="rowsPerPage" class="form-select form-select-sm" >
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Expense Amount</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="expense-list"></tbody>
+            </table>
+
+            <div class="button-container">
+                <button id="prevPageBtn">Previous</button>
+                <p id="pagination-info"></p>
+                <button id="nextPageBtn">Next</button>
+              </div>
+
+        <div class="text-center">
+            <button id="download-expenses" class="btn btn-secondary" >
+              <i class="fa-solid fa-download"></i>  Download Expenses
+            </button>
+        </div>
+    </div>
+
+    <table id="ui2"></table>
+    <button id="refresh-history-btn">Refresh Download History</button>
+
+
+
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="expense.js"></script>

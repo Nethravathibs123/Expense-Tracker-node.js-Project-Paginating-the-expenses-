@@ -9,7 +9,6 @@ forgetPasswordForm.addEventListener('submit', async (event) => {
     try {
         const response = await axios.post(`http://localhost:${port}/password/forgotpassword`, { email });
 
-        // Redirect to login page on successful request
         window.location.href = "http://localhost:3000/login.html";
     }  catch(error){
         console.log('Error adding user: ',error);

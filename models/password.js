@@ -15,4 +15,5 @@ const Forgotpassword = sequelize.define('forgotpassword', {
         allowNull:false
     }
 })
+
 module.exports = Forgotpassword;

@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 require('dotenv').config();
-
+const bodyParser = require('body-parser');
 const cors = require("cors");
 const sequelize = require ('./util/database');
 
@@ -17,19 +17,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 const userRoutes = require('./routes/user');
 const expenseRoutes = require('./routes/expense'); 
 const premiumRoutes = require('./routes/purchase');
-const LeaderBoardRoutes = require('./routes/premium');
 const passwordRoutes = require('./routes/password');
+const downloadhistory=require('./models/downloadhistory')
 
 
 app.use(express.json());
 app.use(cors());
-
+app.use(bodyParser.json());
 app.use(express.static('public', { maxAge: 0 }));
 
 app.use('/user', userRoutes);
 app.use('/expenses', expenseRoutes); 
 app.use('/premium', premiumRoutes);
-app.use('/premium', LeaderBoardRoutes);
 app.use('/password', passwordRoutes);
 
 Users.hasMany(Expense, { foreignKey: 'userId' });
@@ -40,6 +39,9 @@ Order.belongsTo(Users,{foreignKey:"userId"})
 
 Users.hasMany(ForgetPassword,{foreignKey:'userId'});
 ForgetPassword.belongsTo(Users,{foreignKey:'userId'});
+
+Users.hasMany(downloadhistory,{foreignKey:'userId'});
+downloadhistory.belongsTo(Users,{foreignKey:"userId"});
 
 const port = 3000;
 sequelize
